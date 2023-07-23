@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1038752711868-ce86007r3qr0dltsj0ngplhrb85evema.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1038752711868-ce86007r3qr0dltsj0ngplhrb85evema</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBRdFPK4eSc7ijGiRLQYtD3OaJL_MELQi8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1038752711868</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.oru</string>
+	<key>PROJECT_ID</key>
+	<string>oru-phones-33118</string>
+	<key>STORAGE_BUCKET</key>
+	<string>oru-phones-33118.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1038752711868:ios:485e3e91d19d98d4ebfcb9</string>
+</dict>
+</plist>
