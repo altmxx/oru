@@ -5,6 +5,7 @@ const Color darkBlue = Color(0xff2C2E43);
 const Color grey = Color(0xff7F7F7F);
 const Color whiteBg = Color(0xffFBFBFB);
 const Color white = Color(0xffFEFEFE);
+const Color red = Color(0xffCC4F4F);
 
 var imageUrl = [
   'https://www.pngplay.com/wp-content/uploads/3/Black-Apple-Logo-PNG-Images-HD.png',
