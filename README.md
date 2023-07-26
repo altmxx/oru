@@ -1,16 +1,22 @@
-# oru
+# Oru Phones Assignment
 
-A new Flutter project.
+This is the code repository for the oru phones assignment project.
 
-## Getting Started
+## UI/UX Design
 
-This project is a starting point for a Flutter application.
+The UI/UX is the same as that of the original app to a great extent and in the scope of the assignment. I have used flutter_screen_util library to ensure that the design is made pixel perfect as per the figma design that I created to assist me with the padding and dimensions of the widgets. 
 
-A few resources to get you started if this is your first Flutter project:
+## State Management
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Provider package was used to implement a good state management and over all rebuilding of widgets here and there.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Memory optimization.
+
+"const" keyword is used for most places wherever possible to enhance performance and reduce the unnecessary rebuilding of widgets. More over, proper disposal of text controllers is implemented to avoid memory leaks. In addition, API calls are kept properly in mind to avoid over burdening the server with API calls.
+
+## Image Caching
+
+cached_network_image package is used to ensure that the network images being fetched from the urls of internet is properly cached to avoid unnecessary downloads of images. 
+
+To run and build the app, you can clone the repository and run 'flutter pub get'.
+To create an APK of the app you can type "flutter build apk --no-tree-shake-icons"
