@@ -8,6 +8,7 @@ import 'package:oru/components/slider.dart';
 import 'package:oru/constants.dart';
 import 'package:oru/providers/filtersProvider.dart';
 import 'package:oru/providers/productsProvider.dart';
+import 'package:oru/screens/searchScreen.dart';
 import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -109,23 +110,26 @@ class _HomeScreenState extends State<HomeScreen> {
                     ],
                   ),
                   // SizedBox(height: 26.w),
-                  SizedBox(
-                    width: 402,
-                    height: 45,
-                    child: TextField(
-                      controller: searchController,
-                      decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.r))),
-                          filled: true,
-                          fillColor: white,
-                          prefixIcon: const Icon(
-                            Icons.search,
-                            color: black,
+                  GestureDetector(
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const SearchScreen())),
+                    child: Container(
+                      width: 402,
+                      height: 45,
+                      decoration: BoxDecoration(
+                          color: white,
+                          borderRadius: BorderRadius.circular(10.r)),
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.all(8.w),
+                            child: const Icon(
+                              Icons.search,
+                              color: grey,
+                            ),
                           ),
-                          hintText: "Search with make and model",
-                          hintStyle: TextStyle(fontSize: 15.sp, color: grey)),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -159,7 +163,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       itemCount: imageUrl.length,
                     ),
                   ),
-                  ProductsCarousel(),
+                  const ProductsCarousel(),
                   SizedBox(height: 15.h),
                   Text(
                     "Shop By",

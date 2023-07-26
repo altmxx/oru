@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:oru/firebase_options.dart';
 import 'package:oru/providers/filtersProvider.dart';
 import 'package:oru/providers/productsProvider.dart';
+import 'package:oru/providers/searchProvider.dart';
 import 'package:oru/screens/homeScreen.dart';
 import 'package:oru/screens/searchScreen.dart';
 import 'package:provider/provider.dart';
@@ -20,9 +21,8 @@ Future<void> main() async {
     MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (ctx) => ProductsProvider()),
-        ChangeNotifierProvider(
-          create: (ctx) => FiltersProvider(),
-        )
+        ChangeNotifierProvider(create: (ctx) => FiltersProvider()),
+        ChangeNotifierProvider(create: (ctx) => SearchProvider()),
       ],
       child: const MyApp(),
     ),
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               backgroundColor: white,
             ),
-            home: SearchScreen(),
+            home: HomeScreen(),
           );
         });
   }
