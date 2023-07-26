@@ -6,6 +6,7 @@ import 'package:oru/components/phoneCard.dart';
 import 'package:oru/components/productCarousel.dart';
 import 'package:oru/components/slider.dart';
 import 'package:oru/constants.dart';
+import 'package:oru/providers/filtersProvider.dart';
 import 'package:oru/providers/productsProvider.dart';
 import 'package:provider/provider.dart';
 
@@ -42,6 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
           _isLoading = false;
         });
       });
+      Provider.of<FiltersProvider>(context).fetchAndSetFilters();
     }
     _isInit = false;
     super.didChangeDependencies();
@@ -264,227 +266,113 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               SizedBox(height: 12.h),
                                               SizedBox(
-                                                height: 30.h,
-                                                child: ListView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  children: [
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'All',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'Apple',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'Samsung',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'Google',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
+                                                  height: 30.h,
+                                                  child: ListView.separated(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemBuilder: (ctx, i) {
+                                                        return Container(
+                                                          height: 25.h,
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      8.sp),
+                                                          alignment:
+                                                              Alignment.center,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                                  minWidth:
+                                                                      72.w),
+                                                          decoration: BoxDecoration(
+                                                              border:
+                                                                  Border.all(
+                                                                      color:
+                                                                          black,
+                                                                      width: 1),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.r)),
+                                                          child: Text(
+                                                            Provider.of<FiltersProvider>(
+                                                                    context)
+                                                                .brands[i],
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    15.sp),
+                                                          ),
+                                                        );
+                                                      },
+                                                      separatorBuilder:
+                                                          (ctx, i) {
+                                                        return SizedBox(
+                                                            width: 12.w);
+                                                      },
+                                                      itemCount: Provider.of<
+                                                                  FiltersProvider>(
+                                                              context)
+                                                          .brands
+                                                          .length)),
                                               SizedBox(height: 30.h),
                                               Text(
-                                                "Ram",
+                                                "Condition",
                                                 style:
                                                     TextStyle(fontSize: 15.sp),
                                               ),
                                               SizedBox(height: 12.h),
                                               SizedBox(
-                                                height: 30.h,
-                                                child: ListView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  children: [
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'All',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        '1 GB',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        '2 GB',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        '3 GB',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
+                                                  height: 30.h,
+                                                  child: ListView.separated(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemBuilder: (ctx, i) {
+                                                        return Container(
+                                                          height: 25.h,
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      8.sp),
+                                                          alignment:
+                                                              Alignment.center,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                                  minWidth:
+                                                                      72.w),
+                                                          decoration: BoxDecoration(
+                                                              border:
+                                                                  Border.all(
+                                                                      color:
+                                                                          black,
+                                                                      width: 1),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.r)),
+                                                          child: Text(
+                                                            Provider.of<FiltersProvider>(
+                                                                    context)
+                                                                .condition[i],
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    15.sp),
+                                                          ),
+                                                        );
+                                                      },
+                                                      separatorBuilder:
+                                                          (ctx, i) {
+                                                        return SizedBox(
+                                                            width: 12.w);
+                                                      },
+                                                      itemCount: Provider.of<
+                                                                  FiltersProvider>(
+                                                              context)
+                                                          .condition
+                                                          .length)),
                                               SizedBox(height: 30.h),
                                               Row(
                                                 children: [
                                                   Text(
-                                                    "Conditions",
+                                                    "Storage",
                                                     style: TextStyle(
                                                         fontSize: 15.sp),
                                                   ),
@@ -497,115 +385,58 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               SizedBox(height: 12.h),
                                               SizedBox(
-                                                height: 30.h,
-                                                child: ListView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  children: [
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'All',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'Like New',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'Excellent',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'Good',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
+                                                  height: 30.h,
+                                                  child: ListView.separated(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemBuilder: (ctx, i) {
+                                                        return Container(
+                                                          height: 25.h,
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      8.sp),
+                                                          alignment:
+                                                              Alignment.center,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                                  minWidth:
+                                                                      72.w),
+                                                          decoration: BoxDecoration(
+                                                              border:
+                                                                  Border.all(
+                                                                      color:
+                                                                          black,
+                                                                      width: 1),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.r)),
+                                                          child: Text(
+                                                            Provider.of<FiltersProvider>(
+                                                                    context)
+                                                                .storage[i],
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    15.sp),
+                                                          ),
+                                                        );
+                                                      },
+                                                      separatorBuilder:
+                                                          (ctx, i) {
+                                                        return SizedBox(
+                                                            width: 12.w);
+                                                      },
+                                                      itemCount: Provider.of<
+                                                                  FiltersProvider>(
+                                                              context)
+                                                          .storage
+                                                          .length)),
                                               SizedBox(height: 30.h),
                                               Row(
                                                 children: [
                                                   Text(
-                                                    "Warranty",
+                                                    "Ram",
                                                     style: TextStyle(
                                                         fontSize: 15.sp),
                                                   ),
@@ -618,156 +449,54 @@ class _HomeScreenState extends State<HomeScreen> {
                                               ),
                                               SizedBox(height: 12.h),
                                               SizedBox(
-                                                height: 30.h,
-                                                child: ListView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  children: [
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'All',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'Brand Warranty',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'Seller Warranty',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
+                                                  height: 30.h,
+                                                  child: ListView.separated(
+                                                      scrollDirection:
+                                                          Axis.horizontal,
+                                                      itemBuilder: (ctx, i) {
+                                                        return Container(
+                                                          height: 25.h,
+                                                          padding: EdgeInsets
+                                                              .symmetric(
+                                                                  horizontal:
+                                                                      8.sp),
+                                                          alignment:
+                                                              Alignment.center,
+                                                          constraints:
+                                                              BoxConstraints(
+                                                                  minWidth:
+                                                                      72.w),
+                                                          decoration: BoxDecoration(
+                                                              border:
+                                                                  Border.all(
+                                                                      color:
+                                                                          black,
+                                                                      width: 1),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          10.r)),
+                                                          child: Text(
+                                                            Provider.of<FiltersProvider>(
+                                                                    context)
+                                                                .ram[i],
+                                                            style: TextStyle(
+                                                                fontSize:
+                                                                    15.sp),
+                                                          ),
+                                                        );
+                                                      },
+                                                      separatorBuilder:
+                                                          (ctx, i) {
+                                                        return SizedBox(
+                                                            width: 12.w);
+                                                      },
+                                                      itemCount: Provider.of<
+                                                                  FiltersProvider>(
+                                                              context)
+                                                          .ram
+                                                          .length)),
                                               SizedBox(height: 30.h),
-                                              Row(
-                                                children: [
-                                                  Text(
-                                                    "Verification",
-                                                    style: TextStyle(
-                                                        fontSize: 15.sp),
-                                                  ),
-                                                  Icon(Icons.info_outline,
-                                                      size: 24.sp, color: grey),
-                                                ],
-                                              ),
-                                              SizedBox(height: 12.h),
-                                              SizedBox(
-                                                height: 30.h,
-                                                child: ListView(
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  children: [
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'All',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                    Container(
-                                                      height: 25.h,
-                                                      padding:
-                                                          EdgeInsets.symmetric(
-                                                              horizontal: 8.sp),
-                                                      alignment:
-                                                          Alignment.center,
-                                                      constraints:
-                                                          BoxConstraints(
-                                                              minWidth: 72.w),
-                                                      decoration: BoxDecoration(
-                                                          border: Border.all(
-                                                              color: black,
-                                                              width: 1),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.r)),
-                                                      child: Text(
-                                                        'Verified',
-                                                        style: TextStyle(
-                                                            fontSize: 15.sp),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
                                               SizedBox(height: 30.h),
                                               Text(
                                                 "Price",
@@ -835,6 +564,18 @@ class _HomeScreenState extends State<HomeScreen> {
                                                 ],
                                               ),
                                               const AdjustableRangeSlider(),
+                                              SizedBox(height: 35.h),
+                                              SizedBox(
+                                                width: 352.w,
+                                                height: 41.h,
+                                                child: ElevatedButton(
+                                                    onPressed: () {},
+                                                    style: ElevatedButton
+                                                        .styleFrom(
+                                                            backgroundColor:
+                                                                darkBlue),
+                                                    child: const Text('APPLY')),
+                                              )
                                             ],
                                           ),
                                         ),
